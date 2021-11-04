@@ -1,0 +1,36 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+env:
+  PROJECT_PATH: 'Gpanga.Example.SDK/Gpanga.Example.SDK.csproj'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: 3.1.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Project
+        run: |
+          dotnet restore
+          dotnet build --configuration Release --no-restore
+          dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+          NUGET_PUSH_URL: ${{ secrets.NUGET_PUSH_URL }}
+        run: npx semantic-release
