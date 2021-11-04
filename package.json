@@ -42,7 +42,7 @@
             [
                 "semantic-release-nuget",
                 {
-                    "packArguments": ["--include-symbols", "--include-source", "--configuration Release"]
+                    "packArguments": ["--include-symbols", "--include-source"]
                 }
             ],    
             [
