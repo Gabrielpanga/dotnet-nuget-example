@@ -42,7 +42,8 @@
             [
                 "semantic-release-nuget",
                 {
-                    "packArguments": ["--include-symbols", "--include-source"]
+                    "packArguments": ["--include-symbols", "--include-source"],
+                    "pushFiles": "./Gpanga.Example.SDK/bin/Release/Gpanga.Example.SDK.*.nupkg"
                 }
             ],    
             [
