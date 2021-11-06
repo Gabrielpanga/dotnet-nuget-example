@@ -42,7 +42,7 @@
             [
                 "@semantic-release/exec",
                 {
-                    "prepareCmd": "echo '::set-output name=new_release_version::${lastRelease.version}'"
+                    "prepareCmd": "echo '::set-output name=new_release_version::${nextRelease.version}'"
                 }
             ],
             [
