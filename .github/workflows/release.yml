@@ -31,6 +31,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release --no-restore
+
       - name: Release
         id: release
         env:
@@ -38,7 +39,6 @@ jobs:
         run: npx semantic-release
 
       - name: 'Pack & Publish project'
-        if: ${{ steps.release.outputs.new_release_version }}
         run: |
           echo ${{ steps.release.outputs.new_release_version }}
           dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.release.outputs.new_release_version }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
