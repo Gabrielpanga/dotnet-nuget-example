@@ -13,11 +13,12 @@
     <Title>Example SDK project to test GH Actions</Title>
     <Copyright>Copyright 2020-2022</Copyright>
     <Summary>SDK example for APIs</Summary>
-    <PackageIconFile>icon.png</PackageIconFile>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageIcon>images\icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/Gabrielpanga/dotnet-nuget-example/main/icon.png</PackageIconUrl>
+    <PackageReadmeFile>docs/readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\readme.md" Pack="true" PackagePath="\"/>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\readme.md" Pack="true" PackagePath="docs\readme.md"/>
+    <None Include="..\icon.png" Pack="true" PackagePath="images\icon.png"/>
 </ItemGroup>
 </Project>
