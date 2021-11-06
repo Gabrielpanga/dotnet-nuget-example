@@ -1,9 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <NuspecFile>$(MSBuildThisFileDirectory)$(MSBuildProjectName).nuspec</NuspecFile>
-    <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.1.0</PackageVersion>
+    <Authors>Gabriel Pan Gantes</Authors>
+    <Description>SDK example for APIs</Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Owners>Gpanga</Owners>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Gabrielpanga/dotnet-nuget-example</PackageProjectUrl>
+    <PackageTags>example test gh actions</PackageTags>
+    <Title>Example SDK project to test GH Actions</Title>
+    <Copyright>Copyright 2020-2022</Copyright>
+    <Summary>SDK example for APIs</Summary>
+    <PackageIconFile>icon.png</PackageIconFile>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
-
+  <ItemGroup>
+    <None Include="..\readme.md" Pack="true" PackagePath="\"/>
+    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+</ItemGroup>
 </Project>
