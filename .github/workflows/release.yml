@@ -5,7 +5,7 @@ on:
       - main
 env:
   PROJECT_PATH: 'Gpanga.Example.SDK/Gpanga.Example.SDK.csproj'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_PUSH_URL: ${{ secrets.NUGET_PUSH_URL }}
   NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
 
@@ -31,7 +31,6 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release --no-restore
-
       - name: Release
         id: release
         env:
@@ -42,6 +41,6 @@ jobs:
         run: |
           echo ${{ steps.release.outputs.new_release_version }}
           dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.release.outputs.new_release_version }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
-          dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s ${{ env.NUGET_PUSH_URL }}
+          dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s ${{ env.NUGET_PUSH_URL }}
 
                     
