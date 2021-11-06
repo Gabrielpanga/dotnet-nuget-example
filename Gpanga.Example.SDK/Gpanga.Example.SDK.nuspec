@@ -7,7 +7,7 @@
         
         <projectUrl>https://github.com/Gabrielpanga/dotnet-nuget-example</projectUrl>
         <license type="expression">Apache-2.0</license>
-        <iconUrl>https://raw.githubusercontent.com/Gabrielpanga/dotnet-nuget-example/main/icon.png</icon>
+        <iconUrl>https://raw.githubusercontent.com/Gabrielpanga/dotnet-nuget-example/main/icon.png</iconUrl>
 
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Core utility functions for web applications</description>
