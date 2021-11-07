@@ -15,7 +15,7 @@ namespace Gpanga.Example.SDK
         {
             var assembly = Assembly.GetExecutingAssembly();
             var version = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-            WebRequest request = WebRequest.Create("https://gpanga.requestcatcher.com/test");
+            WebRequest request = WebRequest.Create("https://mock.codes/200");
             request.Headers.Add("User-Agent", string.Format("Gpanga.SDK/{0}", version));
             request.Method = "POST";
             request.ContentType = "application/json";
