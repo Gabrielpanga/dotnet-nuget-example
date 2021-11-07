@@ -1,4 +1,5 @@
-﻿using Gpanga.Example.SDK;
+﻿using System.Threading.Tasks;
+using Gpanga.Example.SDK;
 using NUnit.Framework;
 
 namespace Gpanga.Example.Tests
@@ -7,9 +8,10 @@ namespace Gpanga.Example.Tests
     {
 
         [Test]
-        public void MyService_SumTwoNumbers()
+        public async Task MyService_SumTwoNumbers()
         {
-            Assert.AreEqual(MyService.Sum(2, 4), 6);
+            var service = new MyService();
+            Assert.IsNotNull(await service.SendRequest());
         }
     }
 }

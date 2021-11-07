@@ -42,13 +42,7 @@
             [
                 "@semantic-release/exec",
                 {
-                    "prepareCmd": "echo '::set-output name=new_release_version::${nextRelease.version}'"
-                }
-            ],
-            [
-                "@semantic-release/exec",
-                {
-                    "prepareCmd": "sed -i 's#<PackageVersion>.*#<PackageVersion>${nextRelease.version}</PackageVersion>#' Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
+                    "prepareCmd": "./updateVersion.sh ${nextRelease.version}"
                 }
             ],
             [
