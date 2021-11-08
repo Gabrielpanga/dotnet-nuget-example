@@ -11,7 +11,7 @@ namespace Gpanga.Example.Tests
         public async Task MyService_SumTwoNumbers()
         {
             var service = new MyService();
-            Assert.IsNotNull(await service.SendRequest());
+            Assert.IsNotNull(await service.SendRequest("https://mock.codes/200"));
         }
     }
 }

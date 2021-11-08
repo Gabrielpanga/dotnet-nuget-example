@@ -9,15 +9,13 @@ namespace Gpanga.Example.SDK
 {
     public class MyService
     {
-        private static readonly HttpClient client = new HttpClient();
-
-        public async Task<JObject> SendRequest()
+        public async Task<JObject> SendRequest(string url, string method = "POST")
         {
             var assembly = Assembly.GetExecutingAssembly();
             var version = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-            WebRequest request = WebRequest.Create("https://mock.codes/200");
+            WebRequest request = WebRequest.Create(url);
             request.Headers.Add("User-Agent", string.Format("Gpanga.SDK/{0}", version));
-            request.Method = "POST";
+            request.Method = method;
             request.ContentType = "application/json";
             try
             {
