@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <Version>1.5.2</Version>
-    <PackageVersion>1.5.2</PackageVersion>
+    <Version>1.5.3</Version>
+    <PackageVersion>1.5.3</PackageVersion>
     <Authors>Gabriel Pan Gantes</Authors>
     <Description>SDK example for APIs</Description>
     <NeutralLanguage>en-US</NeutralLanguage>
