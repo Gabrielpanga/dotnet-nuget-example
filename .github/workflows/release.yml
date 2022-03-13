@@ -16,31 +16,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v1.8.2
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 3.1.x
-      - name: Build Project
-        run: |
-          dotnet restore
-          dotnet build --configuration Release --no-restore
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-      - name: Install dependencies
-        run: npm ci
-      - name: Release
+      - name: Semantic Release
         id: release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          working_directory: ./Gpanga.Example.SDK
+          extra_plugins: |
+            @semantic-release/commit-analyzer
+            @semantic-release/release-notes-generator
+            @semantic-release/github
+            @semantic-release/git
+            @semantic-release/exec
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
-
+          
       - name: 'Pack & Publish project'
         if: ${{ steps.release.outputs.new_release_version }}
         run: |
-          dotnet pack ${{ env.PROJECT_PATH }} --no-restore --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+          dotnet clean
+          dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
           dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s ${{ env.NUGET_PUSH_URL }}
 
                     
