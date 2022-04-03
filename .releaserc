@@ -28,8 +28,7 @@
                     "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj",
                     "--output ${PACKAGE_OUTPUT_DIRECTORY}"
                 ],
-                "pushFiles": "${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg",
-                "debug": true
+                "pushFiles": "${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg"
             }
         ],
         [
