@@ -27,7 +27,7 @@
                 "packArguments": [
                     "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
                 ],
-                "pushFiles": "../bin/*.nupkg",
+                "pushFiles": "../Gpanga.Example.SDK/bin/*.nupkg",
                 "debug": true
             }
         ],
