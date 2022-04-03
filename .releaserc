@@ -22,7 +22,7 @@
             }
         ],
         [
-            "@zedtk/semantic-release-nuget",
+            "@droidsolutions-oss/semantic-release-nuget",
             {
                 "registry": "${NUGET_PUSH_URL}"
             }
