@@ -31,7 +31,7 @@ jobs:
             @semantic-release/github
             @semantic-release/git
             @semantic-release/exec
-            @droidsolutions-oss/semantic-release-nuget
+            semantic-release-nuget
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

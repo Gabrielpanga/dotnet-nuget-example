@@ -22,10 +22,9 @@
             }
         ],
         [
-            "@droidsolutions-oss/semantic-release-nuget",
+            "semantic-release-nuget",
             {
-                "nugetServer": "${NUGET_PUSH_URL}",
-                "projectPath": "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
+                "packArguments": ["Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"]
             }
         ],
         [
