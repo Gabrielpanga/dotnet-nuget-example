@@ -24,7 +24,7 @@
         [
             "semantic-release-nuget",
             {
-                "packArguments": ["Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"]
+                "packArguments": ["../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"]
             }
         ],
         [
