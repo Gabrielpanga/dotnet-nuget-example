@@ -24,7 +24,6 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
         with:
-          semantic_version: 17.4.7
           working_directory: ./Gpanga.Example.SDK
           extra_plugins: |
             @semantic-release/commit-analyzer
