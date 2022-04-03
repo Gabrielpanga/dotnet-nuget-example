@@ -25,9 +25,9 @@
             "semantic-release-nuget",
             {
                 "packArguments": [
-                    "./Gpanga.Example.SDK.csproj -c Release -o ../output"
+                    "-c Release"
                 ],
-                "pushFiles": "../output/*.nupkg"
+                "pushFiles": "bin/Release/*.nupkg"
             }
         ],
         [
