@@ -6,9 +6,11 @@ on:
       - main
       - poc-release
 env:
-  PROJECT_PATH: 'Gpanga.Example.SDK/Gpanga.Example.SDK.csproj'
+  PROJECT_FILE: 'Gpanga.Example.SDK.csproj'
+  PROJECT_PATH: 'Gpanga.Example.SDK/${{env.PROJECT_FILE}}'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_PUSH_URL: ${{ secrets.NUGET_PUSH_URL }}
+  NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
 
 jobs:
   release:
@@ -31,9 +33,14 @@ jobs:
             @semantic-release/github
             @semantic-release/git
             @semantic-release/exec
-            semantic-release-nuget
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+          PROJECT_FILE: ${{ env.PROJECT_FILE }}
+          
+      - name: 'Pack & Publish project'
+        if: ${{ steps.release.outputs.new_release_version }}
+        run: |
+          dotnet pack ${{ env.PROJECT_PATH }} --no-restore --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+          dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s ${{ env.NUGET_PUSH_URL }}
 
                     

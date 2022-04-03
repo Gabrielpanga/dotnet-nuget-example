@@ -18,23 +18,14 @@
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "../updateVersion.sh '${nextRelease.version}'"
-            }
-        ],
-        [
-            "semantic-release-nuget",
-            {
-                "packArguments": [
-                    " --configuration Release"
-                ],
-                "pushFiles": "bin/Release/*.nupkg"
+                "prepareCmd": "../updateVersion.sh '${nextRelease.version}' ${PROJECT_FILE}"
             }
         ],
         [
             "@semantic-release/git",
             {
                 "assets": [
-                    "./Gpanga.Example.SDK.csproj"
+                    "${PROJECT_FILE}"
                 ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
