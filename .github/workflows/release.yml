@@ -30,6 +30,7 @@ jobs:
             @semantic-release/release-notes-generator
             @semantic-release/github
             @semantic-release/git
+            @semantic-release/exec
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
