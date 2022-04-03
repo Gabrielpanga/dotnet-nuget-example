@@ -26,9 +26,9 @@
             {
                 "packArguments": [
                     "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj",
-                    "--output ${PACKAGE_OUTPUT_DIRECTORY}"
+                    "--configuration Release"
                 ],
-                "pushFiles": "${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg"
+                "pushFiles": "../bin/*.nupkg"
             }
         ],
         [
