@@ -24,14 +24,15 @@
         [
             "@droidsolutions-oss/semantic-release-nuget",
             {
-                "registry": "${NUGET_PUSH_URL}"
+                "nugetServer": "${NUGET_PUSH_URL}",
+                "projectPath": "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
             }
         ],
         [
             "@semantic-release/git",
             {
                 "assets": [
-                    "Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
+                    "../Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
                 ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
