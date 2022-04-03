@@ -1,34 +1,40 @@
 {
-        "branches": [
-            "v+([0-9])?(.{+([0-9]),x}).x",
-            "feat/use-semantic-release-action",
+    "branches": [
+        "v+([0-9])?(.{+([0-9]),x}).x",
+        "feat/use-semantic-release-action",
+        {
+            "name": "beta",
+            "prerelease": true
+        },
+        {
+            "name": "alpha",
+            "prerelease": true
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/github",
+        [
+            "@semantic-release/exec",
             {
-                "name": "beta",
-                "prerelease": true
-            },
-            {
-                "name": "alpha",
-                "prerelease": true
+                "prepareCmd": "../updateVersion.sh '${nextRelease.version}'"
             }
         ],
-        "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
-            "@semantic-release/github",
-            [
-                "@semantic-release/exec",
-                {
-                    "prepareCmd": "../updateVersion.sh '${nextRelease.version}'"
-                }
-            ],
-            [
-                "@semantic-release/git",
-                {
-                    "assets": [
-                        "Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
-                    ],
-                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-                }
-            ]
+        [
+            "@zedtk/semantic-release-nuget",
+            {
+                "registry": "${NUGET_PUSH_URL}"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "Gpanga.Example.SDK/Gpanga.Example.SDK.csproj"
+                ],
+                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+            }
         ]
-    }
+    ]
+}
