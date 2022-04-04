@@ -39,6 +39,7 @@ jobs:
       - name: 'Pack & Publish project'
         if: ${{ steps.release.outputs.new_release_version }}
         run: |
+          dotnet clean
           dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
           dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s ${{ env.NUGET_PUSH_URL }}
 
