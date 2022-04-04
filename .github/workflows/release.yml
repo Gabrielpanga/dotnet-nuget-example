@@ -6,7 +6,6 @@ on:
       - main
       - poc-release
 env:
-  PROJECT_FILE: 'Gpanga.Example.SDK.csproj'
   PROJECT_PATH: 'Gpanga.Example.SDK/Gpanga.Example.SDK.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_PUSH_URL: ${{ secrets.NUGET_PUSH_URL }}

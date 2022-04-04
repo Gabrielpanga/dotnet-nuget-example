@@ -18,14 +18,14 @@
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "../updateVersion.sh '${nextRelease.version}' ${env.PROJECT_FILE}"
+                "prepareCmd": "../updateVersion.sh '${nextRelease.version}' 'Gpanga.Example.SDK.csproj'"
             }
         ],
         [
             "@semantic-release/git",
             {
                 "assets": [
-                    "${env.PROJECT_FILE}"
+                    "Gpanga.Example.SDK.csproj"
                 ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
